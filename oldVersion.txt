@@ -1,0 +1,149 @@
+ **task service**
+ //Bussines Logic
+
+// @Injectable()
+// export class TasksService {
+//     constructor(
+//         @InjectRepository(TasksRepository)
+//         private tasksRepository: TasksRepository,
+//     ) { }
+//     async getTaskById(id: string): Promise<Task> {
+//         const found = await this.tasksRepository.findOne({ where: { id } });
+//         if (!found) {
+//             throw new NotFoundException(`Task with ID "${id}" not found`);
+//         }
+//         return found;
+//     }
+
+//     async createTask(createTaskDto: CreateTaskDto): Promise<Task> {
+//         const { title, description } = createTaskDto;
+
+//         const task = this.tasksRepository.create({
+//             title,
+//             description,
+//             status: TaskStatus.OPEN,
+//         });
+
+//         await this.tasksRepository.save(task);
+//         return task;
+//     }
+// }
+
+ // createTask(createTaskDto: CreateTaskDto): Task {
+    //     const { title, description } = createTaskDto;
+
+    //     const task: Task = {
+    //         id: uuid(),
+    //         title,
+    //         description,
+    //         status: TaskStatus.OPEN,
+    //     };
+
+    //     this.tasks.push(task);
+    //     return task;
+    // }
+
+    // getAllTasks(): Task[] {
+    //     return this.tasks;
+    // }
+
+    // getTaskWithFilters(filterDto: GetTasksFilterDto): Task[] {
+    //     const { status, search } = filterDto;
+
+    //     let tasks = this.getAllTasks();
+
+    //     if (status) {
+    //         tasks = tasks.filter((task) => task.status === status);
+    //     }
+
+    //     if (search) {
+    //         tasks = tasks.filter((task) => {
+    //             if (task.title.includes(search) || task.description.includes(search)) {
+    //                 return true;
+    //             }
+    //             return false;
+    //         });
+    //     }
+
+    //     return tasks;
+    // }
+
+    // getTaskById(id: string): Task {
+    //     const found = this.tasks.find((tasks) => tasks.id === id);
+
+    //     if (!found) {
+    //         throw new NotFoundException(`Task with ID '${id}' is not found.`);
+    //     }
+
+    //     return found;
+    // }
+
+    // getTaskByStatus(status: TaskStatus): Task {
+    //     return this.tasks.find((tasks) => tasks.status === status);
+    // }
+
+    // deleteById(id: string): Task {
+    //     return this.tasks.pop();
+    // }
+
+    // deleteTask(id: string): void {
+    //     const found = this.getTaskById(id);
+    //     this.tasks = this.tasks.filter((task) => task.id !== found.id);
+    // }
+
+    // updateTaskStatus(id: string, status: TaskStatus) {
+    //     const task = this.getTaskById(id);
+    //     task.status = status;
+    //     return task;
+    // }
+
+**controller**
+ // @Post()
+    // createTask(@Body() createTaskDto: CreateTaskDto): Task {
+    //     return this.taskService.createTask(createTaskDto);
+    // }
+
+    // //Get by filter
+    // @Get()
+    // getTasks(@Query() filterDto: GetTasksFilterDto): Task[] {
+    //     //if we have any filters defined, call taskService.getTasksWithFilter
+    //     //otherwise, get all tasks
+    //     if (Object.keys(filterDto).length) {
+    //         return this.taskService.getTaskWithFilters(filterDto);
+    //     }
+    //     else {
+    //         return this.taskService.getAllTasks();
+    //     }
+    // }
+
+    // // /tasks/id
+    // @Get('/:id')
+    // getTaskById(@Param('id') id: string): Task {
+    //     return this.taskService.getTaskById(id);
+    // }
+
+    // @Get('/:status')
+    // getTaskByStatus(@Param('status') status: TaskStatus): Task {
+    //     return this.taskService.getTaskByStatus(status);
+    // }
+
+    // //main delete
+    // @Delete('/delete1/:id')
+    // deleteTask(@Param('id') id: string): void {
+    //     this.taskService.deleteTask(id);
+    // }
+
+    // //my version of delete
+    // @Delete('/delete/:id')
+    // deleteById(@Param('id') id: string): Task {
+    //     return this.taskService.deleteById(id);
+    // }
+
+    // @Patch('/:id/status')
+    // updateTaskStatus(
+    //     @Param('id') id: string,
+    //     @Body() updateTaskStatusDto: UpdateTaskStatusDto,
+    // ): Task {
+    //     const { status } = updateTaskStatusDto;
+    //     return this.taskService.updateTaskStatus(id, status);
+    // }
